@@ -1,7 +1,7 @@
 module Csb
   class Client
     def providers
-      get("paas/offerings.json")
+      get("/paas/offerings.json")
     end
 
     def provider(id)
@@ -11,25 +11,24 @@ module Csb
     end
 
     def providers_runtimes(providers = nil)
-      self.providers_generic_feature('runtimes', providers)
+      providers_generic_feature('runtimes', providers)
     end
 
     def providers_frameworks(providers = nil)
-      self.providers_generic_feature('frameworks', providers)
+      providers_generic_feature('frameworks', providers)
     end
 
     def providers_service_vendors(providers = nil)
-      self.providers_generic_feature('service_vendors', providers)
+      providers_generic_feature('service_vendors', providers)
     end
 
     def providers_metrics(providers = nil)
-      self.providers_generic_feature('metrics', providers)
+      providers_generic_feature('metrics', providers)
     end
 
     private
     def providers_generic_feature(name, provs = nil)
-      provs = self.providers if provs.nil?
-
+      provs = providers if provs.nil?
       generic = []
       provs.each do |p|
         generic |= p[name]
