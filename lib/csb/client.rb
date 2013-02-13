@@ -1,5 +1,6 @@
 require 'csb/app'
 require 'csb/provider'
+require 'csb/service'
 require 'csb/user'
 require 'csb/version'
 
