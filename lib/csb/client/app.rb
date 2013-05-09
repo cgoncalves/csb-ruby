@@ -11,12 +11,17 @@ module Csb
 
       def eval_manifest(manifest)
         body = JSON.generate(manifest)
-        post("manifest", body, { "Content-Type" => "application/json" })
+        post("manifest", body, 'application/json', false)
       end
 
-      def app_create(id, manifest)
+      def app_create(id, repository_type)
+        body = { "repository_type" => repository_type }
+        post("apps/#{id}", body)
+      end
+
+      def app_add_manifest(id, manifest)
         body = JSON.generate(manifest)
-        post("apps/#{id}", body, { "Content-Type" => "application/json" })
+        post("apps/#{id}/manifest", body, 'application/json', false)
       end
 
       def app_destroy(id)
